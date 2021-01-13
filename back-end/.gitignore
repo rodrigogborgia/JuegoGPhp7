@@ -1,0 +1,7 @@
+/.vscode/
+/vendor/
+/logs/*
+/db/
+!/logs/README.md
+src/settings.php
+templates/cache/

@@ -1,0 +1,237 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/Splash.gd" type="Script" id=1]
+[ext_resource path="res://imgs/bg.png" type="Texture" id=2]
+[ext_resource path="res://imgs/g25446.png" type="Texture" id=3]
+[ext_resource path="res://imgs/writer.png" type="Texture" id=4]
+[ext_resource path="res://audio/click.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/key.wav" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Splash_Entrada"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg/g25446:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg/g25446:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -374.88, 380 ), Vector2( -374.88, 190.278 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bg:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Formulario/writer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 303.56 ), Vector2( 511.654, 303.56 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Formulario/Nombre:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Splash" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 511.026, 296.374 )
+scale = Vector2( 1.0879, 1.02183 )
+texture = ExtResource( 2 )
+
+[node name="g25446" type="Sprite" parent="bg"]
+position = Vector2( -374.88, 190.278 )
+texture = ExtResource( 3 )
+
+[node name="Entrada" type="AnimationPlayer" parent="."]
+autoplay = "Splash_Entrada"
+anims/Splash_Entrada = SubResource( 1 )
+
+[node name="Formulario" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="writer" type="Sprite" parent="Formulario"]
+position = Vector2( 511.654, 303.56 )
+scale = Vector2( 1.09347, 1.08864 )
+texture = ExtResource( 4 )
+
+[node name="Siguiente" type="Button" parent="Formulario"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 288.0
+margin_top = 384.0
+margin_right = -288.0
+margin_bottom = -88.0
+text = "SIGUIENTE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Formulario/Siguiente"]
+stream = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Formulario"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 128.0
+margin_top = 192.0
+margin_right = -128.0
+margin_bottom = -312.0
+text = "Su DNI"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nombre" type="LineEdit" parent="Formulario"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 192.0
+margin_top = 268.0
+margin_right = -192.0
+margin_bottom = -267.0
+align = 1
+max_length = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Formulario/Nombre"]
+stream = ExtResource( 6 )
+
+[node name="Instrucciones" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Instrucciones"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 48.0
+margin_right = -64.0
+margin_bottom = -120.0
+text = "Este juego de obstáculos, te propone realizar un recorrido en el cual la memoria y la atención serán tus aliados para llegar a la meta.
+
+Pone atención a la versión ‘demo’ que se presenta al inicio del juego, la cual te guiará para comprender sus reglas.
+
+Una vez que comiences a jugar, habrá un tiempo definido para que llegues a la meta."
+align = 3
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Siguiente" type="Button" parent="Instrucciones"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 288.0
+margin_top = 450.0
+margin_right = -288.0
+margin_bottom = -22.0
+text = "SIGUIENTE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instrucciones2" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Instrucciones2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 48.0
+margin_right = -80.0
+margin_bottom = -120.0
+text = "IMPORTANTE!
+
+Todos los desempeños son válidos, este juego con es valorativo, es un acercamiento para tener mayor información sobre modalidades de  resolución de tareas.
+
+Muchas Gracias!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Comenzar" type="Button" parent="Instrucciones2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 288.0
+margin_top = 450.0
+margin_right = -288.0
+margin_bottom = -22.0
+text = "COMENZAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="Formulario/Siguiente" to="." method="_on_Comenzar_button_down"]
+[connection signal="pressed" from="Formulario/Siguiente" to="." method="_on_Comenzar_pressed"]
+[connection signal="text_changed" from="Formulario/Nombre" to="." method="_on_Nombre_text_changed"]
+[connection signal="button_down" from="Instrucciones/Siguiente" to="." method="_on_Comenzar_button_down"]
+[connection signal="pressed" from="Instrucciones/Siguiente" to="Instrucciones2" method="show"]
+[connection signal="pressed" from="Instrucciones/Siguiente" to="Instrucciones" method="hide"]
+[connection signal="button_down" from="Instrucciones2/Comenzar" to="." method="_on_Comenzar_button_down"]
+[connection signal="pressed" from="Instrucciones2/Comenzar" to="." method="_on_Comenzar2_pressed"]

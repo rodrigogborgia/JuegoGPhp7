@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/ui.tpsheet-c3596a3d32bdf8a7c1460e0876f70c23.res"
+
+[deps]
+
+files=[ "res://sprites/ui.sprites/grey_arrowUpGrey.tres", "res://sprites/ui.sprites/grey_arrowUpWhite.tres", "res://sprites/ui.sprites/grey_arrowDownWhite.tres", "res://sprites/ui.sprites/grey_arrowDownGrey.tres", "res://sprites/ui.sprites/grey_crossWhite.tres", "res://sprites/ui.sprites/grey_crossGrey.tres", "res://sprites/ui.sprites/grey_checkmarkGrey.tres", "res://sprites/ui.sprites/grey_checkmarkWhite.tres", "res://sprites/ui.sprites/grey_circle.tres", "res://sprites/ui.sprites/grey_box.tres", "res://sprites/ui.sprites/grey_boxCheckmark.tres", "res://sprites/ui.sprites/grey_boxTick.tres", "res://sprites/ui.sprites/grey_boxCross.tres", "res://sprites/ui.sprites/grey_button11.tres", "res://sprites/ui.sprites/grey_button09.tres", "res://sprites/ui.sprites/grey_button02.tres", "res://sprites/ui.sprites/grey_button04.tres", "res://sprites/ui.sprites/grey_button13.tres", "res://sprites/ui.sprites/grey_button00.tres", "res://sprites/ui.sprites/grey_button14.tres", "res://sprites/ui.sprites/grey_button15.tres", "res://sprites/ui.sprites/grey_button07.tres", "res://sprites/ui.sprites/grey_button01.tres", "res://sprites/ui.sprites/grey_button03.tres", "res://sprites/ui.sprites/grey_button12.tres", "res://sprites/ui.sprites/grey_button05.tres", "res://sprites/ui.sprites/grey_button08.tres", "res://sprites/ui.sprites/grey_button10.tres", "res://sprites/ui.sprites/grey_button06.tres", "res://sprites/ui.sprites/grey_panel.tres" ]
+
+source_file="res://sprites/ui.tpsheet"
+dest_files=[ "res://.import/ui.tpsheet-c3596a3d32bdf8a7c1460e0876f70c23.res", "res://sprites/ui.sprites/grey_arrowUpGrey.tres", "res://sprites/ui.sprites/grey_arrowUpWhite.tres", "res://sprites/ui.sprites/grey_arrowDownWhite.tres", "res://sprites/ui.sprites/grey_arrowDownGrey.tres", "res://sprites/ui.sprites/grey_crossWhite.tres", "res://sprites/ui.sprites/grey_crossGrey.tres", "res://sprites/ui.sprites/grey_checkmarkGrey.tres", "res://sprites/ui.sprites/grey_checkmarkWhite.tres", "res://sprites/ui.sprites/grey_circle.tres", "res://sprites/ui.sprites/grey_box.tres", "res://sprites/ui.sprites/grey_boxCheckmark.tres", "res://sprites/ui.sprites/grey_boxTick.tres", "res://sprites/ui.sprites/grey_boxCross.tres", "res://sprites/ui.sprites/grey_button11.tres", "res://sprites/ui.sprites/grey_button09.tres", "res://sprites/ui.sprites/grey_button02.tres", "res://sprites/ui.sprites/grey_button04.tres", "res://sprites/ui.sprites/grey_button13.tres", "res://sprites/ui.sprites/grey_button00.tres", "res://sprites/ui.sprites/grey_button14.tres", "res://sprites/ui.sprites/grey_button15.tres", "res://sprites/ui.sprites/grey_button07.tres", "res://sprites/ui.sprites/grey_button01.tres", "res://sprites/ui.sprites/grey_button03.tres", "res://sprites/ui.sprites/grey_button12.tres", "res://sprites/ui.sprites/grey_button05.tres", "res://sprites/ui.sprites/grey_button08.tres", "res://sprites/ui.sprites/grey_button10.tres", "res://sprites/ui.sprites/grey_button06.tres", "res://sprites/ui.sprites/grey_panel.tres" ]
+
+[params]
+

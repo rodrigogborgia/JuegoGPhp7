@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="loading" lang="en">
+<!-- BEGIN: Head-->
+
+<head>
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Jeronimo Schreyer">
+    <title>Maze of Frustration - {{ title }}</title>
+    <link rel="apple-touch-icon" href={{ asset("images/ico/apple-icon-120.png") }}>
+    <link rel="shortcut icon" type="image/x-icon" href={{ asset("images/ico/favicon.ico") }}>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href={{ asset("vendors/css/vendors.min.css") }}>
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href={{ asset("css/bootstrap.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ asset("css/bootstrap-extended.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ asset("css/colors.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ asset("css/components.css") }}>
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href={{ asset("css/core/menu/menu-types/horizontal-menu.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ asset("css/core/colors/palette-gradient.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ asset("css/core/colors/palette-callout.css") }}>
+    <!-- END: Page CSS-->
+	
+	<style type="text/css">
+	.landscape-hidden {
+		display: block;
+	}
+	
+	@media (orientation: landscape) {
+		.landscape-hidden {
+			display: none;
+		}
+	}
+	</style>
+    <!-- END: Custom CSS-->
+
+    <!-- BEGIN: Vendor JS-->
+    <script src={{ asset("vendors/js/vendors.min.js") }}></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src={{ asset("vendors/js/ui/jquery.sticky.js") }}></script>
+    <script src={{ asset("vendors/js/charts/jquery.sparkline.min.js") }}></script>
+    <script src={{ asset("vendors/js/charts/chart.min.js") }}></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src={{ asset("js/core/app-menu.js") }}></script>
+    <script src={{ asset("js/core/app.js") }}></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src={{ asset("js/scripts/ui/breadcrumbs-with-stats.js") }}></script>
+    <!-- END: Page JS-->
+{% endblock %}
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow navbar-static-top navbar-light navbar-brand-center">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav flex-row">
+					{% if back_action %}
+                    <li class="nav-item landscape-hidden"><a class="nav-link hidden-xs" href={{ back_action }} style="padding: 1.5rem 1rem;"><i class="ft-arrow-left" style="font-size: 2rem;"></i></a></li>
+					{% endif %}
+                    <li class="nav-item"><a class="navbar-brand" href={{ asset("") }}><img class="brand-logo" alt="modern admin logo" src={{ asset("images/logo/logo.png") }}>
+                            <h3 class="brand-text">Maze of Frustration</h3>
+                        </a></li>
+                </ul>
+				<ul class="nav navbar-nav float-right" style="position: absolute; top: .7rem; right: 1rem;">
+					<li class="dropdown dropdown-user nav-item landscape-hidden"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online" style="margin-left: 8.5rem;"><img src={{ asset("images/portrait/small/avatar-s-19.png") }} alt="avatar"><i></i></span></a>
+						<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+						</div>
+					</li>
+				</ul>
+            </div>
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav mr-auto float-left">
+					{% if back_action %}
+                        <li class="nav-item"><a class="nav-link" href={{ back_action }}><i class="ft-arrow-left"></i></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="#" data-language="en"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#" data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#" data-language="pt"><i class="flag-icon flag-icon-pt"></i> Portuguese</a><a class="dropdown-item" href="#" data-language="de"><i class="flag-icon flag-icon-de"></i> German</a></div>
+                        </li>
+					{% endif %}
+					</ul>
+                    <ul class="nav navbar-nav float-right">
+                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">John Doe</span><span class="avatar avatar-online"><img src={{ asset("images/portrait/small/avatar-s-19.png") }} alt="avatar"><i></i></span></a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+
+{% block content %}
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-6 col-12 mb-2">
+                    <h3 class="content-header-title">{{ title }}</h3>
+                    <div class="row breadcrumbs-top">
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+			{% block content_body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light navbar-shadow">
+	{% block footer %}
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2020 <a class="text-bold-800 grey darken-2" href="#" target="_blank">MOTIVARNOS</a></span></p>
+	{% endblock %}
+    </footer>
+    <!-- END: Footer-->
+{% endblock %}
+</body>
+<!-- END: Body-->
+
+</html>

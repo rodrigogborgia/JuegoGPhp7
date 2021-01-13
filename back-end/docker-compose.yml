@@ -1,0 +1,36 @@
+version: '2'
+
+volumes:
+    logs:
+        driver: local
+
+services:
+    slim:
+        build:
+            dockerfile: dockerfile
+            context: .
+        working_dir: /var/www
+        command: php -S 0.0.0.0:80 -t public
+        environment:
+            docker: "true"
+        ports:
+            - 8080:80
+        volumes:
+            - .:/var/www
+            - logs:/var/www/logs
+    mysql-server:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: qwerty
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./db:/var/lib/mysql
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:5.0.1
+        environment:
+            PMA_HOST: mysql-server
+            PMA_USER: root
+            PMA_PASSWORD: qwerty
+        ports: 
+            - 5000:80

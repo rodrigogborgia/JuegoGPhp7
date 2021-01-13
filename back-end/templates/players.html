@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% set title = 'Jugadores' %}
+
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .right {
+			text-align: right;
+		}
+        .center {
+			text-align: center;
+		}
+    </style>
+{% endblock %}
+
+{% block content_body %}
+                <!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Lista de Jugadores</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="center">Name</th>
+                                                    <th class="right">Registered</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+												{% for player in players %}
+                                                <tr>
+                                                    <td class="center"><a href={{ asset("player") }}/{{ player.id }}>{{ player.name }}</a></td>
+                                                    <td class="right">{{ player.timestamp }}</td>
+                                                </tr>
+												{% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Basic Tables end -->
+{% endblock %}

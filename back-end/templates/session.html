@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% set title = "#{session.player.name} - Nivel #{session.level}" %}
+{% set back_action = asset("player/#{session.player.id}") %}
+
+{% block content_body %}
+<script type="text/javascript" src="{{ asset("js/session-distance-chart.js") }}">// Chart Styles and Options</script>
+<script type="text/javascript">
+    $(window).on('load', function () {
+        
+        // Create the chart
+        var ctx = $('#line-stacked-area');
+        var stackedAreaChart = new Chart(ctx, config);
+        var last_group_selected = 0;
+
+        // Connect to refresh
+        $('a[data-action="reload"]').on('click', function () {
+            update_chart(stackedAreaChart, $(this).closest('.card'), last_group_selected);
+        });
+        update_chart(stackedAreaChart, ctx.closest('.card'));
+
+        // Connect to group
+        // $('input[name=group]').on('change', function () {
+        //     last_group_selected = $('input[name=group]:checked').val();
+        //     update_chart(stackedAreaChart, $(this).closest('.card'), last_group_selected);
+        // });
+
+    });
+
+    function update_chart(chart, element, group = 0) {
+        $.get("{{ asset('session/distance/') }}{{ session.id }}", function (data, status) {
+            chartData.labels = ["0"]
+            chartData.datasets[0].data = [10]
+            JSON.parse(data).forEach(element => {
+                chartData.labels.push(element[1]);
+                chartData.datasets[0].data.push(element[0]);
+            });
+            //chartData.datasets.forEach(function (dataset, index, _array) {
+            //    dataset.data = session.datasets[index].data;
+            //});
+            chart.update();
+            element.unblock();
+        });
+    }
+</script>
+                <!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Acciones</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                {% for action, times in session.actions %}
+                                                <tr>
+                                                    <th>{{ action }}</th>
+                                                    <td>{{ times }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Estad&iacute;sticas</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                {% for stat, value in session.stats %}
+                                                <tr>
+                                                    <th>{{ stat }}</th>
+                                                    <td>{{ value }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Movimientos hacia el objetivo</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+									<section id="chartjs-line-charts">
+										<div class="row">
+											<div class="col-12">
+												<div class="card">
+													<div class="card-header">
+														<h4 class="card-title"></h4>
+														<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+														<div class="heading-elements">
+															<ul class="list-inline mb-0">
+																<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+																<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+																<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+															</ul>
+														</div> <!--
+														<div class="heading-elements" style="left: 20px; background-color: transparent; width: max-content;">
+															<div class="btn-group btn-group-toggle" data-toggle="buttons">
+																<label class="btn round btn-sm btn-outline-info active">
+																	<input type="radio" name="group" id="option1" value="0" checked=""><i class="ft-slash"></i>
+																</label>
+																<label class="btn round btn-sm btn-outline-info">
+																	<input type="radio" name="group" id="option2" value="1">1s <i class="ft-clock"></i>
+																</label>
+																<label class="btn round btn-sm btn-outline-info">
+																	<input type="radio" name="group" id="option3" value="10">10s <i class="ft-clock"></i>
+																</label>
+															</div>
+														</div> -->
+													</div>
+													<div class="card-content collapse show">
+														<div class="card-body chartjs">
+															<canvas id="line-stacked-area" height="500"></canvas>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Basic Tables end -->
+{% endblock %}

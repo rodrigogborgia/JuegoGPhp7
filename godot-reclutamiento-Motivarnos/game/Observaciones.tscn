@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Observaciones.gd" type="Script" id=1]
+[ext_resource path="res://audio/click.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio/key.wav" type="AudioStream" id=3]
+
+[node name="Observaciones" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Enviar" type="Button" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 288.0
+margin_top = 448.0
+margin_right = -288.0
+margin_bottom = -24.0
+text = "ENVIAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Container/Enviar"]
+stream = ExtResource( 2 )
+
+[node name="Observaciones" type="TextEdit" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 192.0
+margin_top = 192.0
+margin_right = -192.0
+margin_bottom = -204.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Container/Observaciones"]
+stream = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -408.0
+text = "observaciones"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Gracias" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "muchas gracias
+por jugar"
+align = 1
+valign = 1
+uppercase = true
+[connection signal="button_down" from="Container/Enviar" to="." method="_on_Enviar_button_down"]
+[connection signal="pressed" from="Container/Enviar" to="." method="_on_Enviar_pressed"]
+[connection signal="text_changed" from="Container/Observaciones" to="." method="_on_Observaciones_text_changed"]
